@@ -17,9 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-
-
+#Tell Django where to store these files
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',  # new line
             ],
         },
     },
@@ -127,5 +129,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [STATIC_DIR, ]
+
+
+# Media files
+# tell Django where to look in your filesystem for media files that have been uploaded and stored
+MEDIA_ROOT = MEDIA_DIR
+#tell Django what URL to server media files from
+MEDIA_URL = '/media/'
